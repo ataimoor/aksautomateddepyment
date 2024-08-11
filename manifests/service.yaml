@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-qclead
+  namespace: demo-aks-autodeploy
+  labels:
+    kubernetes.azure.com/generator: devhub
+spec:
+  type: LoadBalancer
+  selector:
+    app: dotnet-qclead
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
