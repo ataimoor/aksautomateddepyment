@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-qclead
+  labels:
+    app: dotnet-qclead
+    kubernetes.azure.com/generator: devhub
+  namespace: demo-aks-autodeploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-qclead
+  template:
+    metadata:
+      labels:
+        app: dotnet-qclead
+    spec:
+      containers:
+        - name: dotnet-qclead
+          image: automateddeploy1723383372546.azurecr.io/autodeplloy1723383372546:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
